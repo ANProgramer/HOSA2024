@@ -12,6 +12,8 @@ import Keratitis from './Keratitis';
 import Pterygium from './Pterygium'; 
 import Main from "./Main";
 import Scan from "./Scan";
+import CameraScreen from "./Camera"; // Import CameraScreen component
+import AnalysisResults from "./AnalysisResults"; // You'll need to create this file
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -27,6 +29,8 @@ export default function App() {
         <Stack.Screen name="Hypopyon" component={Hypopyon} />
         <Stack.Screen name="Keratitis" component={Keratitis} />
         <Stack.Screen name="Pterygium" component={Pterygium} />
+        <Stack.Screen name="Camera" component={CameraScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="AnalysisResults" component={AnalysisResults} />
       </Stack.Navigator>
     </NavigationContainer>
   );

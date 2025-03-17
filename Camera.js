@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -39,6 +39,7 @@ const CameraScreen = () => {
 
   const takePicture = async () => {
     try {
+      // Using the original MediaTypeOptions which is safer
       const result = await ImagePicker.launchCameraAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
         allowsEditing: true,
@@ -57,6 +58,7 @@ const CameraScreen = () => {
 
   const selectImage = async () => {
     try {
+      // Using the original MediaTypeOptions which is safer
       const result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
         allowsEditing: true,
@@ -82,12 +84,8 @@ const CameraScreen = () => {
 
     setIsAnalyzing(true);
     
-    // Simulate analysis process
-    setTimeout(() => {
-      setIsAnalyzing(false);
-      // Navigate to results page
-      navigation.navigate('AnalysisResults', { imageUri: capturedImage });
-    }, 2000);
+    // Navigate to results page
+    navigation.navigate('AnalysisResults', { imageUri: capturedImage });
   };
 
   if (capturedImage) {
