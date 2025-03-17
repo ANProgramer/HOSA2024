@@ -30,13 +30,13 @@ const Scan = ({ navigation }) => {
       aspect: [4, 3], // Aspect ratio of the selected image
     });
 
-    if (result.cancelled) {
-      Alert.alert('Cancelled', 'You cancelled image selection');
-    } else if (result.assets && result.assets.length > 0) {
+    if (!result.canceled && result.assets && result.assets.length > 0) {
       const imageUri = result.assets[0].uri;
       setSelectedImage(imageUri);
-      Alert.alert('Success', 'Image selected successfully');
       setIsModalVisible(false); // Close the modal after selecting an image
+      
+      // Navigate to analysis results with the selected image
+      navigation.navigate('AnalysisResults', { imageUri });
     }
   };
 
@@ -47,7 +47,7 @@ const Scan = ({ navigation }) => {
 
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('Camera')} // Replace 'Camera' with your camera screen
+        onPress={() => navigation.navigate('Camera')}
       >
         <Text style={styles.buttonText}>Take a Picture</Text>
       </TouchableOpacity>

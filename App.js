@@ -12,6 +12,8 @@ import Keratitis from './Keratitis';
 import Pterygium from './Pterygium'; 
 import Main from "./Main";
 import Scan from "./Scan";
+import CameraScreen from "./Camera";
+import AnalysisResults from "./AnalysisResults_TeachableMachine";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -27,6 +29,16 @@ export default function App() {
         <Stack.Screen name="Hypopyon" component={Hypopyon} />
         <Stack.Screen name="Keratitis" component={Keratitis} />
         <Stack.Screen name="Pterygium" component={Pterygium} />
+        <Stack.Screen 
+          name="Camera" 
+          component={CameraScreen} 
+          options={{ headerShown: false }} 
+        />
+        <Stack.Screen 
+          name="AnalysisResults" 
+          component={AnalysisResults} 
+          options={{ headerShown: false }} 
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -56,8 +68,6 @@ function TabNavigator() {
     </Tab.Navigator>
   );
 }
-
-
 
 const styles = StyleSheet.create({
   container: {
